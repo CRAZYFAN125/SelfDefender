@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Node
+  - Baza
   layers:
   - Default
   - TransparentFX
@@ -39,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Enemy
+    uniqueID: 3811074359
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 2nd Layer
+    uniqueID: 1969032565
     locked: 0

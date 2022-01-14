@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed = 15f;
     public float damage = 10.5f;
     public float health = 15;
-
+    //private bool isDamaged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,11 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
-            BazaScript.instance.Damage(damage);
+            //if (!isDamaged)
+            //{
+                BazaScript.instance.Damage(damage);
+            //    isDamaged = true;
+            //}
             Destroy(gameObject);
             return;
         }

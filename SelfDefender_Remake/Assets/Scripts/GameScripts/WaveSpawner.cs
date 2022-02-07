@@ -23,6 +23,11 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemys.Length!=0)
+        {
+            return;
+        }
         if (countdown <= 0)
         {
            StartCoroutine(SpawnWave(EnemyPrefab));

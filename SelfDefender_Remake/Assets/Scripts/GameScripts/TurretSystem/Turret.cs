@@ -6,11 +6,24 @@ namespace Crazy.TurretSystem
 {
     public class Turret : MonoBehaviour
     {
-        public Transform target;
+        #region ShootProp
+        [Header("ShootProp")]
         public float range = 10f;
+        public float fireRate = 1f;
+        private float fireCountdown = 0f;
+        public GameObject bulletPrefab;
+        public Transform[] firePoints;
+        public float DamageAmount = 5f;
+        #endregion
+        #region MainProp
+        [Header("Main")]
+        [SerializeField] bool isRotating = true;
+        private Transform target;
         public string enemyTag = "Enemy";
 
         public Transform partToRotate;
+        #endregion
+
         //public Transform image;
 
         // Start is called before the first frame update
@@ -50,21 +63,29 @@ namespace Crazy.TurretSystem
             if (target == null) return;
 
             #region Rotate
+            if (isRotating) { 
+                Vector2 lookDir = target.position - transform.position;
+                float angleZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-            Vector3 dir = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = lookRotation.eulerAngles;
-
-            partToRotate.rotation = Quaternion.Euler(0,0,rotation.x);
-            if (rotation.x < 180 || rotation.x > 0)
-            {
-                partToRotate.localScale = new Vector3(-1, 1, 1);
-            }
-            else
-            {
-                partToRotate.localScale = new Vector3(-1, 1, 1);
+                partToRotate.rotation = Quaternion.Euler(0, 0, angleZ);
             }
             #endregion
+
+            if (fireCountdown<=0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+            fireCountdown-=Time.deltaTime;
+        }
+
+        void Shoot()
+        {
+            foreach (Transform firePoint in firePoints)
+            {
+                Bullet bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity).GetComponent<Bullet>();
+                bullet.Init(target,DamageAmount);
+            }
         }
 
         private void OnDrawGizmosSelected()

@@ -33,4 +33,13 @@ public class Enemy : MonoBehaviour
             return;
         }
     }
+
+    public void Hit(float amount)
+    {
+        health -= amount;
+        if (health<=0f)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

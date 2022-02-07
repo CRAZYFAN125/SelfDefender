@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2611459459235411312}
   - component: {fileID: 2944684018166253972}
   - component: {fileID: 306892765945924693}
+  - component: {fileID: 6460263622587496669}
   m_Layer: 0
   m_Name: EnemyPrefab
   m_TagString: Enemy
@@ -100,6 +101,41 @@ MonoBehaviour:
   speed: 2.5
   damage: 10
   health: 15
+--- !u!60 &6460263622587496669
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179868466726684900}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.8828125}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.484375, y: -0.05859375}
+      - {x: 0.5, y: -0.02734375}
+      - {x: 0.2578125, y: 0.44140625}
+      - {x: -0.2578125, y: 0.44140625}
+      - {x: -0.265625, y: 0.4375}
+      - {x: -0.29296875, y: 0.390625}
+      - {x: -0.5, y: 0.03125}
+      - {x: -0.265625, y: -0.4375}
+      - {x: -0.2578125, y: -0.44140625}
+      - {x: 0.265625, y: -0.4375}
 --- !u!1 &3059544196419432311
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   ArtWork: {fileID: 21300000, guid: 8ccc0b022096ea94ea391ff38f39ecd9, type: 3}
   name: Standart Turret
   Prefab: {fileID: 7080659953411407003, guid: 79e5d7dbbe13c8a46ba32aec37af1d9e, type: 3}
-  cost: 50
+  cost: 75

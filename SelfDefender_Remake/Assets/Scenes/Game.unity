@@ -773,6 +773,7 @@ GameObject:
   - component: {fileID: 292666508}
   - component: {fileID: 292666510}
   - component: {fileID: 292666511}
+  - component: {fileID: 292666512}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -918,11 +919,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standartTurretPrefab: {fileID: 7080659953411407003, guid: 79e5d7dbbe13c8a46ba32aec37af1d9e, type: 3}
+  turretToBuild: {fileID: 0}
   ShopMenu: {fileID: 168589515}
   MenuPrefab: {fileID: 710026407}
   turrets:
   - {fileID: 11400000, guid: 75eb2b81120a97842b27b8ef9f14fc2e, type: 2}
   - {fileID: 11400000, guid: 739d42bc18ca3314598508ba9f91ca07, type: 2}
+--- !u!114 &292666512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292666505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3ddc8044b068642a81501774f5a0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &303674757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2386,6 +2400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Art: {fileID: 1458620471}
   button: {fileID: 2099428120}
+  price: {fileID: 410662866}
 --- !u!1001 &725154091
 PrefabInstance:
   m_ObjectHideFlags: 0

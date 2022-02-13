@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed = 15f;
     public float damage = 10.5f;
     public float health = 15;
+    [SerializeField] private int lootMoney = 10;
     //private bool isDamaged = false;
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
         health -= amount;
         if (health<=0f)
         {
+            GameManager.instance.MoneyCount += lootMoney;
             Destroy(gameObject);
         }
     }

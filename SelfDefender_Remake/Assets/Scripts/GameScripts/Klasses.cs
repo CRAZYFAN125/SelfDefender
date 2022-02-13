@@ -9,9 +9,9 @@ namespace Crazy
     {
         public NodeData() { }
         public string nodeName;
-        public GameObject build;
+        public string build;
 
-        public NodeData(string _nodeName, GameObject _build) { nodeName = _nodeName;build = _build; }
+        public NodeData(string _nodeName, GameObject _build) { nodeName = _nodeName;build = _build.name; }
     }
 
     #region Save

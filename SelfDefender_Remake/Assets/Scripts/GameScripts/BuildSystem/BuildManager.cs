@@ -7,7 +7,7 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
     public GameObject standartTurretPrefab;
-    private InGameTurret turretToBuild;
+    [HideInInspector]public InGameTurret turretToBuild;
     #region Shop Menu Creator
     [Header("Shop:")]
     public Transform ShopMenu;

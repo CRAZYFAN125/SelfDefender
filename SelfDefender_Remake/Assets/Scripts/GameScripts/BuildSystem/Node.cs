@@ -39,17 +39,23 @@ public class Node : MonoBehaviour
         {
             return;
         }
+
         if (bManager.GetTurretToBuild() == null)
         {
             return;
         }
+
         if (currentTurret != null)
         {
             Debug.Log("Can't do it!");
             return;
         }
-        
+        if (GameManager.instance.MoneyCount-bManager.turretToBuild.cost<0)
+        {
+            return;
+        }
        currentTurret= Instantiate(bManager.GetTurretToBuild(), transform.position, Quaternion.identity, transform);
+        GameManager.instance.MoneyCount -= bManager.turretToBuild.cost;
     }
     private void OnMouseExit()
     {
@@ -59,11 +65,33 @@ public class Node : MonoBehaviour
     #region Save/Load methods
     public NodeData GetNodeData()
     {
-        return new NodeData(gameObject.name, currentTurret);
+        if (currentTurret != null)
+        {
+            return new NodeData(gameObject.name, currentTurret);
+        }
+        else
+        {
+            return null;
+        }
     }
     public void SetNodeData(NodeData data)
     {
-        currentTurret = Instantiate(data.build, transform.position, Quaternion.identity, transform);
+        currentTurret = GetObject(data.build);
+        if (currentTurret != null)
+        {
+            Instantiate(currentTurret, transform.position, Quaternion.identity, transform);
+        }
+    }
+    GameObject GetObject(string tName)
+    {
+        foreach (InGameTurret item in BuildManager.instance.turrets)
+        {
+            if (item.Prefab.gameObject.name + "(Clone)" == tName)
+            {
+                return item.Prefab;
+            }
+        }
+        return null;
     }
     #endregion
 }

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text Money;
     public int MoneyCount = 100;
     public bool isShopOpen { get; private set; } = false;
+
+
     private void Awake()
     {
         if (instance!=null)
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
         Money.text = $"{MoneyCount} Coins";
     }
 
+
+    #region InputSystem
     public void Move(InputAction.CallbackContext callback)
     {
         if (callback.performed)
@@ -59,4 +63,5 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
 }

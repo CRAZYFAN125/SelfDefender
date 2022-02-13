@@ -1,0 +1,85 @@
+{
+    "SavedNodes": {
+        "nodeDatas": [
+            {
+                "nodeName": "Node (36)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (39)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node",
+                "build": "StandartTurret(Clone)"
+            },
+            {
+                "nodeName": "Node (21)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (1)",
+                "build": "StandartTurret(Clone)"
+            },
+            {
+                "nodeName": "Node (22)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (47)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (37)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (31)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (19)",
+                "build": "StandartTurret(Clone)"
+            },
+            {
+                "nodeName": "Node (9)",
+                "build": "StandartTurret(Clone)"
+            },
+            {
+                "nodeName": "Node (30)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (4)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (45)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (3)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (40)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (48)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (46)",
+                "build": "RocketLuncher(Clone)"
+            },
+            {
+                "nodeName": "Node (38)",
+                "build": "RocketLuncher(Clone)"
+            }
+        ]
+    },
+    "money": 100,
+    "wave": 4,
+    "gameType": 0
+}

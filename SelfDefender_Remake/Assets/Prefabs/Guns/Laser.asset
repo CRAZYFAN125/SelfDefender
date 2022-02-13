@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ff070a74c4f0da4e83220a15cfab015, type: 3}
-  m_Name: Standart
+  m_Name: Laser
   m_EditorClassIdentifier: 
-  ArtWork: {fileID: 21300000, guid: 8ccc0b022096ea94ea391ff38f39ecd9, type: 3}
-  name: Standart Turret
-  Prefab: {fileID: 7080659953411407003, guid: 79e5d7dbbe13c8a46ba32aec37af1d9e, type: 3}
-  cost: 50
+  ArtWork: {fileID: 21300000, guid: 5590d854913a81741b97a23a27f46e07, type: 3}
+  name: LaserTurret
+  Prefab: {fileID: 2752771123010347644, guid: 9cadf525dbf748e4cae266d02cddad46, type: 3}
+  cost: 500

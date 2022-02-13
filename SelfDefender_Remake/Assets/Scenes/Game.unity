@@ -905,7 +905,7 @@ MonoBehaviour:
   moveSpeed: 6
   ShopPanel: {fileID: 1993701706}
   Money: {fileID: 2128818163}
-  MoneyCount: 100
+  MoneyCount: 1000
 --- !u!114 &292666511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +925,7 @@ MonoBehaviour:
   turrets:
   - {fileID: 11400000, guid: 75eb2b81120a97842b27b8ef9f14fc2e, type: 2}
   - {fileID: 11400000, guid: 739d42bc18ca3314598508ba9f91ca07, type: 2}
+  - {fileID: 11400000, guid: cf52f0ebf6ea031489be61030c46732e, type: 2}
 --- !u!114 &292666512
 MonoBehaviour:
   m_ObjectHideFlags: 0

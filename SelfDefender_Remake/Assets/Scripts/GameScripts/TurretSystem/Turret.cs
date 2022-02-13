@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Crazy.TurretSystem
 {
     public class Turret : MonoBehaviour
     {
+
         #region ShootProp
         [Header("ShootProp")]
         public float range = 10f;
@@ -14,6 +14,11 @@ namespace Crazy.TurretSystem
         public GameObject bulletPrefab;
         public Transform[] firePoints;
         public float DamageAmount = 5f;
+        [Header("If Laser")]
+        public bool Laser = false;
+        public LineRenderer lineRenderer;
+        bool Lasering = false;
+
         #endregion
         #region MainProp
         [Header("Main")]
@@ -53,44 +58,97 @@ namespace Crazy.TurretSystem
             }
             else
             {
-                target=null;
+                target = null;
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (target == null) return;
+            if (target == null) {
+                if (Laser)
+                {
+                    lineRenderer.enabled = false;
+                }
+                return; 
+             
+            }
 
             #region Rotate
-            if (isRotating) { 
-                Vector2 lookDir = target.position - transform.position;
-                float angleZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-
-                partToRotate.rotation = Quaternion.Euler(0, 0, angleZ);
+            if (isRotating)
+            {
+                LockOnTarget();
             }
             #endregion
 
-            if (fireCountdown<=0f)
+            if (Laser)
             {
-                Shoot();
-                fireCountdown = 1f / fireRate;
+                LaserShoot();
             }
-            fireCountdown-=Time.deltaTime;
+            else
+            {
+                if (fireCountdown <= 0f)
+                {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                fireCountdown -= Time.deltaTime;
+            }
         }
+        void LaserShoot()
+        {
+            if (!lineRenderer.enabled)
+            {
+                lineRenderer.enabled = true;
+            }
+            if (firePoints[0]!=null)
+            {
+                lineRenderer.SetPosition(0, firePoints[0].position);
+            }
+            else
+            {
+                lineRenderer.SetPosition(0, new Vector3(0,0,-1));
+            }
+            lineRenderer.SetPosition(1, target.position);
+            if (!Lasering)
+            {
+                Lasering = true;
+                StartCoroutine(LaserShootByTime());
+            }
+            
+        }
+        IEnumerator LaserShootByTime()
+        {
+            if (target!=null)
+            {
+                Enemy x = target.GetComponent<Enemy>();
+                while (target!=null)
+                {
+                        x.Hit(DamageAmount);
+                        yield return new WaitForSeconds(2f);
+                }
+            }
+            Lasering=false;
+        }
+        void LockOnTarget()
+        {
+            Vector2 lookDir = target.position - transform.position;
+            float angleZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
+            partToRotate.rotation = Quaternion.Euler(0, 0, angleZ);
+        }
         void Shoot()
         {
             foreach (Transform firePoint in firePoints)
             {
                 Bullet bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity).GetComponent<Bullet>();
-                bullet.Init(target,DamageAmount);
+                bullet.Init(target, DamageAmount);
             }
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (range>0f)
+            if (range > 0f)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(transform.position, range);

@@ -12,8 +12,10 @@ namespace Crazy.TurretSystem
         public float fireRate = 1f;
         private float fireCountdown = 0f;
         public GameObject bulletPrefab;
-        public Transform[] firePoints;
+        public Transform[] firePointsData;
+        private Vector3[] firePoints;
         public float DamageAmount = 5f;
+
         [Header("If Laser")]
         public bool Laser = false;
         public LineRenderer lineRenderer;
@@ -22,7 +24,7 @@ namespace Crazy.TurretSystem
         #endregion
         #region MainProp
         [Header("Main")]
-        [SerializeField] bool isRotating = true;
+        public bool isRotating = true;
         private Transform target;
         public string enemyTag = "Enemy";
 
@@ -31,10 +33,32 @@ namespace Crazy.TurretSystem
 
         //public Transform image;
 
+
+        public void ApplyVectors(Vector3[] vector3s)
+        {
+            firePoints = vector3s;
+        }
         // Start is called before the first frame update
         void Start()
         {
             InvokeRepeating("UpdateTarget", 0f, .5f);
+            if (firePointsData != null)
+            {
+                firePoints = new Vector3[firePointsData.Length];
+                for (int i = 0; i < firePointsData.Length; i++)
+                {
+                    firePoints[i] = firePointsData[i].position;
+                }
+            }
+            else
+            {
+                if (firePoints.Length == 0 && firePoints[0] == null)
+                {
+                    firePoints = new Vector3[1];
+                    firePoints[0] = new Vector3 (0,0,0);
+                }
+            }
+
         }
 
         void UpdateTarget()
@@ -65,13 +89,14 @@ namespace Crazy.TurretSystem
         // Update is called once per frame
         void Update()
         {
-            if (target == null) {
+            if (target == null)
+            {
                 if (Laser)
                 {
                     lineRenderer.enabled = false;
                 }
-                return; 
-             
+                return;
+
             }
 
             #region Rotate
@@ -101,13 +126,13 @@ namespace Crazy.TurretSystem
             {
                 lineRenderer.enabled = true;
             }
-            if (firePoints[0]!=null)
+            if (firePoints[0] != null)
             {
-                lineRenderer.SetPosition(0, firePoints[0].position);
+                lineRenderer.SetPosition(0, firePoints[0]);
             }
             else
             {
-                lineRenderer.SetPosition(0, new Vector3(0,0,-1));
+                lineRenderer.SetPosition(0, new Vector3(0, 0, -1));
             }
             lineRenderer.SetPosition(1, target.position);
             if (!Lasering)
@@ -115,20 +140,20 @@ namespace Crazy.TurretSystem
                 Lasering = true;
                 StartCoroutine(LaserShootByTime());
             }
-            
+
         }
         IEnumerator LaserShootByTime()
         {
-            if (target!=null)
+            if (target != null)
             {
                 Enemy x = target.GetComponent<Enemy>();
-                while (target!=null)
+                while (target != null)
                 {
-                        x.Hit(DamageAmount);
-                        yield return new WaitForSeconds(2f);
+                    x.Hit(DamageAmount);
+                    yield return new WaitForSeconds(2f);
                 }
             }
-            Lasering=false;
+            Lasering = false;
         }
         void LockOnTarget()
         {
@@ -139,9 +164,9 @@ namespace Crazy.TurretSystem
         }
         void Shoot()
         {
-            foreach (Transform firePoint in firePoints)
+            foreach (Vector3 firePoint in firePoints)
             {
-                Bullet bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity).GetComponent<Bullet>();
+                Bullet bullet = Instantiate(bulletPrefab, firePoint, Quaternion.identity).GetComponent<Bullet>();
                 bullet.Init(target, DamageAmount);
             }
         }

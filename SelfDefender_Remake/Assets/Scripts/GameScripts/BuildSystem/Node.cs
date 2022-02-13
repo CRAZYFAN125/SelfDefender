@@ -55,6 +55,10 @@ public class Node : MonoBehaviour
             return;
         }
        currentTurret= Instantiate(bManager.GetTurretToBuild(), transform.position, Quaternion.identity, transform);
+        if (!currentTurret.activeSelf)
+        {
+            currentTurret.SetActive(true);
+        }
         GameManager.instance.MoneyCount -= bManager.turretToBuild.cost;
     }
     private void OnMouseExit()

@@ -6,25 +6,30 @@ using System.IO;
 
 public class SaveSystemCore : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static SaveSystemCore instance;
+    void Awake()
     {
-        
+        if (instance!=null)
+        {
+            Destroy(this);
+            return;
+        }
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Save();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Save();
+        //}
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Load();
+        //}
     }
-    void Load()
+    public void Load()
     {
         SaveData save = JsonUtility.FromJson<SaveData>(File.ReadAllText(Application.dataPath + "/save0.json"));
 
@@ -51,7 +56,7 @@ public class SaveSystemCore : MonoBehaviour
             }
         }
     }
-    void Save()
+    public void Save()
     {
         SaveData save = new SaveData(GameType.Default);
         save.money = GameManager.instance.MoneyCount;

@@ -51,3 +51,32 @@ namespace Crazy
     }
     #endregion
 }
+namespace Crazy.ModSystem
+{
+
+    public class TurretModCore
+    {
+        [Header("Turret")]
+        public string turretName = "New Turret";
+        public string turretArtPath = "<Path to image>";
+        public int turretCost = 200;
+        public string turretAmmo = "Default/Rocket/Laser";
+        public float turretDamage = 1;
+        public float turretRange = 3;
+        public float turretFireRate = 1f;
+        public bool isTurretRotating = true;
+        public Vector3[] TurretFirePoints = { new Vector3(0, 0, 0) };
+
+        //[Header("Bullet")]
+        //public string bulletArtPath = "<Path to image>";
+        //public bool isBulletRotating = false;
+
+        public static void CreateBundle()
+        {
+            TurretModCore turret = new TurretModCore();
+
+            string x = JsonUtility.ToJson(turret,true);
+            System.IO.File.WriteAllText(Application.dataPath+"/TurretMod.json", x);
+        }
+    }
+}

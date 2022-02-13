@@ -131,7 +131,7 @@ MonoBehaviour:
   range: 8
   fireRate: 1
   bulletPrefab: {fileID: 0}
-  firePoints:
+  firePointsData:
   - {fileID: 2734677352650698919}
   DamageAmount: 0.5
   Laser: 1

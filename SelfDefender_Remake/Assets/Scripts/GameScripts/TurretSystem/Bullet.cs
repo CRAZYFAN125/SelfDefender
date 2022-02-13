@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class Bullet : MonoBehaviour
@@ -28,7 +27,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (target==null)
+        if (target == null)
         {
             Destroy(gameObject);
             return;
@@ -36,7 +35,7 @@ public class Bullet : MonoBehaviour
 
         Vector2 lookDir = target.position - transform.position;
 
-        float distanceThisFrame = speed *Time.deltaTime;
+        float distanceThisFrame = speed * Time.deltaTime;
         if (isRotating)
         {
             float angleZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
@@ -84,18 +83,18 @@ public class Bullet : MonoBehaviour
     }
     void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position,boomRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, boomRadius);
         foreach (Collider item in colliders)
         {
             if (item.gameObject.tag == "Enemy")
             {
                 //if (item.transform == target)
                 //{
-                    item.GetComponent<Enemy>().Hit(dmAmount);
+                item.GetComponent<Enemy>().Hit(dmAmount);
                 //}
                 //else
                 //{
-                    //item.GetComponent<Enemy>().Hit(dmAmount / 2);
+                //item.GetComponent<Enemy>().Hit(dmAmount / 2);
                 //}
             }
         }

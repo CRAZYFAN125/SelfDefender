@@ -8,4 +8,5 @@ public class InGameTurret : ScriptableObject
     public new string name = "New Turret";
     public GameObject Prefab;
     public int cost = 200;
+    public Material material;
 }

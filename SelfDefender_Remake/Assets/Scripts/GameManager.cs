@@ -63,5 +63,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void SaveAndExit(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SaveSystemCore.instance.Save();
+        }
+    }
     #endregion
 }

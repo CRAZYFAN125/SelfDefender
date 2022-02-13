@@ -129,9 +129,11 @@ MonoBehaviour:
   range: 8
   fireRate: 0.5
   bulletPrefab: {fileID: 5202472471262273871, guid: ba4c0965577df85418505d7ee16e82c8, type: 3}
-  firePoints:
+  firePointsData:
   - {fileID: 2801114826652393852}
   DamageAmount: 10
+  Laser: 0
+  lineRenderer: {fileID: 0}
   isRotating: 0
   enemyTag: Enemy
   partToRotate: {fileID: 0}

@@ -14,7 +14,7 @@ public class BuildManager : MonoBehaviour
     public MenuPlaner MenuPrefab;
     public List<InGameTurret> turrets;
 
-    private void Start()
+    public void RunMaking()
     {
         foreach (InGameTurret item in turrets)
         {

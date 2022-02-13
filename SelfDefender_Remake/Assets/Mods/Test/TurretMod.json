@@ -1,0 +1,17 @@
+{
+    "turretName": "Hello",
+    "turretArtPath": "../../Images/StandartTurret.png",
+    "turretCost": 200,
+    "turretAmmo": "Default",
+    "turretDamage": 1.0,
+    "turretRange": 3.0,
+    "turretFireRate": 1.0,
+    "isTurretRotating": true,
+    "TurretFirePoints": [
+        {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+        }
+    ]
+}
